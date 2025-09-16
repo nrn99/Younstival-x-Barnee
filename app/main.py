@@ -20,21 +20,21 @@ allow_headers=["*"],
 
 
 class QARequest(BaseModel):
-question: str
-k: int | None = 6
+    question: str
+    k: int | None = 6
 
 
 @app.get("/health")
 async def health():
-return {"status": "ok"}
+    return {"status": "ok"}
 
 
 @app.post("/qa")
 async def qa(req: QARequest):
-# TODO: wire to your retriever + LLM using the JSONL dataset
-# Placeholder echo response for infra validation
-return {
-"answer": f"You asked: {req.question}",
-"k": req.k,
-"source": "youngstival-jsonl"
-}
+    # TODO: wire to your retriever + LLM using the JSONL dataset
+    # Placeholder echo response for infra validation
+    return {
+    "answer": f"You asked: {req.question}",
+    "k": req.k,
+    "source": "youngstival-jsonl"
+    }
